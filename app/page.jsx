@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import { client } from "./lib/sanity";
-import { simpleBlogCard } from "./lib/interface";
 import { urlFor } from "./lib/sanity"; // make sure this is exported from your sanity.ts
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -22,7 +21,7 @@ export async function getData() {
 }
 
 const Page = async () => {
-  const blogData: simpleBlogCard[] = await getData();
+  const blogData = await getData();
 
   return (
      <div className="grid grid-cols-1 md:grid-cols-2 mt-5 gap-8 ">

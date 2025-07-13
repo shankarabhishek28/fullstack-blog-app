@@ -4,7 +4,7 @@
 import { ThemeProvider } from "./theme-provider";
 import React from "react";
 
-export function Providers({ children }: { children: React.ReactNode }) {
+export function Providers({ children }) {
   const [mounted, setMounted] = React.useState(false);
 
   React.useEffect(() => {
