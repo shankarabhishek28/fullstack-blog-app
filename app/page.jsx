@@ -5,7 +5,7 @@ import { urlFor } from "./lib/sanity"; // make sure this is exported from your s
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-export const revalidate = 30 
+// export const revalidate = 3600
 
 export async function getData() {
   const query = `

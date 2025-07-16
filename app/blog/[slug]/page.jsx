@@ -3,7 +3,7 @@ import { PortableText } from "@portabletext/react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
-export const revalidate = 30 
+// export const revalidate = 3600
 async function getData(slug) {
   const query = `
     *[_type == "blog" && slug.current == '${slug}'][0] {
