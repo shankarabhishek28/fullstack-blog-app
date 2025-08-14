@@ -28,14 +28,14 @@ export default async function BlogArticle({
   if (!data) return notFound();
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-10">
+    <div className="max-w-6xl mx-auto mt-28 px-6 py-10">
       <Card>
         <Image
           src={urlFor(data.titleImage).url()}
           alt={data.title}
           width={800}
           height={800}
-          className="w-full h-[300px] object-cover rounded-t-md"
+          className="w-full h-[400px] object-cover rounded-t-md"
         />
         <CardContent className="py-6">
           <h1 className="text-3xl font-bold mb-2">{data.title}</h1>
