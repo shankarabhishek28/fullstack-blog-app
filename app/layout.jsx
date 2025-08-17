@@ -3,6 +3,8 @@ import "./globals.css";
 
 import { Providers } from "./component/provider";
 import Navbar from "./component/Navbar";
+import Footer from "./component/Footer";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,6 +32,7 @@ export default function RootLayout({
           <Providers>
             <Navbar />
             <main className="px-6 max-w-full mx-auto">{children}</main></Providers>
+            <Footer/>
        
       </body>
     </html>
