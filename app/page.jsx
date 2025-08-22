@@ -1,7 +1,7 @@
 import { client } from "./lib/sanity";
 import BlogHome from "./component/BlogHome";
 
-export const revalidate = 60;
+// export const revalidate = 60;
 
 async function getBlogs() {
   const query = `
