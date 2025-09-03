@@ -7,6 +7,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+import { useEffect } from "react";
 
 const categories = [
   "Good News", "Our Picks", "Business", "Analysis", "World",
@@ -21,13 +23,19 @@ const categ = [
 export default function BlogHome({ blogs, latestBlog }) {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const router = useRouter();
+  const [mounted, setMounted] = useState(false);
+
+  const [shown, setShown] = useState(false);
+
 
   const handleCardClick = (cat) => {
     setSelectedCategory(cat);
     const topBlog = blogs.find((b) => b.category === cat);
-    if (topBlog) {
-      router.push(`/blog/${topBlog.currentSlug}`);
+    if (!topBlog && !shown) {
+      toast.error("No blogs in this category!");
+      setShown(true);
     }
+    if (topBlog) router.push(`/blog/${topBlog.currentSlug}`);
   };
 
   return (
@@ -39,11 +47,10 @@ export default function BlogHome({ blogs, latestBlog }) {
             <button
               key={cat}
               onClick={() => handleCardClick(cat)}
-              className={`px-4 py-2 rounded-md border shrink-0 ${
-                selectedCategory === cat
-                  ? "bg-black text-white"
-                  : "bg-white text-black hover:bg-gray-200"
-              }`}
+              className={`px-4 py-2 rounded-md border shrink-0 ${selectedCategory === cat
+                ? "bg-black text-white"
+                : "bg-white text-black hover:bg-gray-200"
+                }`}
             >
               {cat}
             </button>
@@ -87,16 +94,70 @@ export default function BlogHome({ blogs, latestBlog }) {
             <div
               key={idx}
               onClick={() => handleCardClick(cat)}
-              className="cursor-pointer flex items-center justify-center h-32 rounded-lg text-white font-semibold"
+              className="cursor-pointer flex items-center justify-center h-32 rounded-lg text-white font-semibold relative overflow-hidden"
               style={{
                 backgroundColor:
-                  idx % 4 === 0 ? "#f97316"
-                  : idx % 4 === 1 ? "#4b5563"
-                  : idx % 4 === 2 ? "#1e293b"
-                  : "#000",
+                  idx % 4 === 0 ? "#ea580c"
+                    : idx % 4 === 1 ? "#4b5563"
+                      : idx % 4 === 2 ? "#1e293b"
+                        : "#000",
               }}
             >
-              {cat}
+              {/* Faded image overlay only for Business */}
+              {cat === "Business" && (
+                <div className="absolute inset-0">
+                  <Image
+                    src="/business.jpg"
+                    alt="Business"
+                    fill
+                    className="object-cover opacity-70" // fade effect
+                  />
+                </div>
+              )}
+               {cat === "Climate" && (
+                <div className="absolute inset-0">
+                  <Image
+                    src="/climate.jpg"
+                    alt="Business"
+                    fill
+                    className="object-cover opacity-70" // fade effect
+                  />
+                </div>
+              )}
+               {cat === "Science" && (
+                <div className="absolute inset-0">
+                  <Image
+                    src="/science.jpg"
+                    alt="Business"
+                    fill
+                    className="object-cover opacity-70" // fade effect
+                  />
+                </div>
+              )}
+                {cat === "World" && (
+                <div className="absolute inset-0">
+                  <Image
+                    src="/world.jpg"
+                    alt="Business"
+                    fill
+                    className="object-cover opacity-70" // fade effect
+                  />
+                </div>
+              )}
+               {cat === "Sport" && (
+                <div className="absolute inset-0">
+                  <Image
+                    src="/sports.jpg"
+                    alt="Business"
+                    fill
+                    className="object-cover opacity-70" // fade effect
+                  />
+                </div>
+              )}
+
+
+              {/* Category Text */}
+              <span className="relative z-10">{cat}</span>
             </div>
           ))}
         </div>

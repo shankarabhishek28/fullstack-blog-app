@@ -38,7 +38,7 @@ async function getRelatedBlogs(category, slug) {
 async function getOtherBlogs(slug) {
   const query = `
     *[_type == "blog" && slug.current != $slug] 
-    | order(_createdAt desc)[0...4] {
+    | order(_createdAt desc)[0...6] {
       "currentSlug": slug.current,
       title,
       smallDescription,
