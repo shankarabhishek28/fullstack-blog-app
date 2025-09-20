@@ -5,7 +5,7 @@ import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-// export const revalidate = 60;
+export const revalidate = 60;
 // fetch single blog
 async function getData(slug) {
   const query = `
