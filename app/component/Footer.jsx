@@ -25,10 +25,10 @@ export default function Footer() {
                 <div>
                     <h3 className="font-semibold mb-4">Useful pages</h3>
                     <ul className="space-y-2">
-                        <li><Link href="/about" className="hover:underline">About us</Link></li>
+                        <li><Link href="/about-us" className="hover:underline">About us</Link></li>
                         <li><Link href="/contact" className="hover:underline">Contact us</Link></li>
                         <li><Link href="/terms" className="hover:underline">Terms and Conditions</Link></li>
-                        <li><Link href="/privacy" className="hover:underline">Privacy Policy</Link></li>
+                        <li><Link href="/privacy-policy" className="hover:underline">Privacy Policy</Link></li>
                         <li><Link href="/guidelines" className="hover:underline">Content Guidelines</Link></li>
                     </ul>
                 </div>
