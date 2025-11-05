@@ -33,6 +33,14 @@ export const metadata = {
   alternates: {
     canonical: siteUrl,
   },
+  // Add Google Search Console verification meta tag here
+  // Get the verification code from Google Search Console
+  // Format: verification: { google: 'your-verification-code-here' }
+  ...(process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION && {
+    verification: {
+      google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION,
+    },
+  }),
 };
 
 export default function RootLayout({
