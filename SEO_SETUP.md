@@ -163,3 +163,4 @@ curl http://localhost:3000/robots.txt
 - Check that `generateMetadata` function is exported correctly
 - Ensure metadata is being returned from the function
 
+

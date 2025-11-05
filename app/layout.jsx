@@ -33,6 +33,17 @@ export const metadata = {
   alternates: {
     canonical: siteUrl,
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
+  },
   // Add Google Search Console verification meta tag here
   // Get the verification code from Google Search Console
   // Format: verification: { google: 'your-verification-code-here' }
