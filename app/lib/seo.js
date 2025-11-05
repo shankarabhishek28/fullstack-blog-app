@@ -34,7 +34,7 @@ export const defaultSEO = {
  * @returns {Object} SEO metadata object
  */
 export function generatePostSEO(post) {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://yourdomain.com';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.todayatusa.com';
   const imageUrl = post.titleImage 
     ? (typeof post.titleImage === 'string' 
         ? post.titleImage 
@@ -84,7 +84,7 @@ export function generatePostSEO(post) {
  * @returns {Object} JSON-LD object
  */
 export function generatePostJSONLD(post) {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://yourdomain.com';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.todayatusa.com';
   const imageUrl = post.titleImage 
     ? (typeof post.titleImage === 'string' 
         ? post.titleImage 

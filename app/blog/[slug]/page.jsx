@@ -37,7 +37,7 @@ export async function generateMetadata({ params }) {
     };
   }
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://yourdomain.com';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.todayatusa.com';
   const imageUrl = urlFor(data.titleImage).url();
   
   const seoData = generatePostSEO({
@@ -98,7 +98,7 @@ export default async function BlogArticle({ params }) {
   }
 
   // Generate JSON-LD structured data
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://yourdomain.com';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.todayatusa.com';
   const imageUrl = urlFor(data.titleImage).url();
   const jsonLd = generatePostJSONLD({
     ...data,

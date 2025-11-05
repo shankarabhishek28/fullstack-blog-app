@@ -1,6 +1,6 @@
 import { client } from './lib/sanity';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://yourdomain.com';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.todayatusa.com';
 
 // Fetch all blog posts
 async function getAllBlogs() {
