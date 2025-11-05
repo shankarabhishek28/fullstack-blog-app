@@ -5,7 +5,10 @@ import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { generatePostSEO, generatePostJSONLD } from "@/app/lib/seo";
+import Script from "next/script";
 // export const revalidate = 60;
+
 // fetch single blog
 async function getData(slug) {
   const query = `
@@ -14,10 +17,43 @@ async function getData(slug) {
       title,
       content,
       titleImage,
-      category
+      category,
+      smallDescription,
+      _createdAt,
+      _updatedAt
     }
   `;
   return await client.fetch(query, { slug });
+}
+
+// Generate metadata for SEO
+export async function generateMetadata({ params }) {
+  const { slug } = params;
+  const data = await getData(slug);
+  
+  if (!data) {
+    return {
+      title: 'Blog Post Not Found',
+    };
+  }
+
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://yourdomain.com';
+  const imageUrl = urlFor(data.titleImage).url();
+  
+  const seoData = generatePostSEO({
+    ...data,
+    titleImage: imageUrl,
+  });
+
+  return {
+    title: seoData.title,
+    description: seoData.description,
+    openGraph: seoData.openGraph,
+    twitter: seoData.twitter,
+    alternates: {
+      canonical: seoData.alternates.canonical,
+    },
+  };
 }
 
 // fetch related blogs
@@ -61,10 +97,28 @@ export default async function BlogArticle({ params }) {
     fallbackBlogs = await getOtherBlogs(slug);
   }
 
+  // Generate JSON-LD structured data
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://yourdomain.com';
+  const imageUrl = urlFor(data.titleImage).url();
+  const jsonLd = generatePostJSONLD({
+    ...data,
+    titleImage: imageUrl,
+  });
+
   return (
-    <div className="max-w-6xl mx-auto mt-28 px-6 py-10">
-      {/* Main blog */}
-      <Card>
+    <>
+      {/* JSON-LD Structured Data */}
+      <Script
+        id="blog-post-jsonld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd),
+        }}
+      />
+      
+      <div className="max-w-6xl mx-auto mt-28 px-6 py-10">
+        {/* Main blog */}
+        <Card>
         <Image
           src={urlFor(data.titleImage).url()}
           alt={data.title}
@@ -139,6 +193,7 @@ export default async function BlogArticle({ params }) {
           </>
         )}
       </div>
-    </div>
+      </div>
+    </>
   );
 }
