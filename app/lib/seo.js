@@ -1,17 +1,17 @@
 export const defaultSEO = {
-  title: 'Your Blog Name | Insights & Updates',
+  title: 'Today at USA | Insights & Updates',
   description: 'Discover expert articles, guides, and stories on our Next.js blog.',
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: process.env.NEXT_PUBLIC_SITE_URL || 'https://www.todayatusa.com',
-    siteName: 'Your Blog Name',
+    siteName: 'Today at USA',
     images: [
       {
         url: '/blogLogo.png',
         width: 1200,
         height: 630,
-        alt: 'Your Blog Name',
+        alt: 'Today at USA',
       },
     ],
   },
