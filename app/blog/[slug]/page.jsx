@@ -7,7 +7,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { generatePostSEO, generatePostJSONLD } from "@/app/lib/seo";
 import Script from "next/script";
-// export const revalidate = 60;
+export const revalidate = 120;
 
 // fetch single blog
 async function getData(slug) {
