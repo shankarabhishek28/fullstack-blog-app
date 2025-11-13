@@ -1,5 +1,5 @@
 export const defaultSEO = {
-  title: 'Today at USA | Insights & Updates',
+  title: 'Today at USA | Latest Insights & Updates',
   description: 'Discover expert articles, guides, and stories on our Next.js blog.',
   openGraph: {
     type: 'website',
